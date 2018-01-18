@@ -2,6 +2,10 @@ class TunnelUtils {
 	static performTunneling() {
 		return executeEmbedSearch();
 	}
+
+	static getItemTitle() {
+		return Promise.resolve('test title');
+	}
 }
 
 const executeEmbedSearch = (fileName) => {
