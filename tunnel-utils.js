@@ -7,23 +7,24 @@ class TunnelUtils {
 const executeEmbedSearch = (fileName) => {
 	let script;
 
-	if (isPlaybuzzDomain()) {
-		script = getNativeItemId;
-	} else {
-		script = getEmbeddedItemId;
-	}
-
-	return new Promise((resolve, reject) => {
-	    chrome.tabs.executeScript(null, {code:script}, 
-			(results) => {
-		        resolve(results);
-		    }
-	    );
-	});
+	return isPlaybuzzDomain()
+		.then(is => {
+			script = is ? getNativeItemId : getEmbeddedItemId;
+		})
+		.then(() => {
+			return new Promise((resolve, reject) => {
+			    chrome.tabs.executeScript(null, {code:script}, 
+					(results) => {
+						console.log(results);
+				        resolve(results);
+				    }
+			    );
+			});
+		});
 };
 
-const getEmbeddedItemId = `document.querySelector('.playbuzz').getAttribute('data-id');`;
-const getNativeItemId = `document.body.getAttribute('data-gameid');`;
+const getEmbeddedItemId = `console.log('embed');document.querySelector('.playbuzz').getAttribute('data-id');`;
+const getNativeItemId = `console.log('native');document.body.getAttribute('data-gameid');`;
 
 const isPlaybuzzDomain = () => {
 	return getCurrentUrl().then(url => {
