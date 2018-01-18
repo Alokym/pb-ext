@@ -23,8 +23,8 @@ const executeEmbedSearch = (fileName) => {
 		});
 };
 
-const getEmbeddedItemId = `console.log('embed');document.querySelector('.playbuzz').getAttribute('data-id');`;
-const getNativeItemId = `console.log('native');document.body.getAttribute('data-gameid');`;
+const getEmbeddedItemId = `document.querySelector('.playbuzz').getAttribute('data-id');`;
+const getNativeItemId = `document.body.getAttribute('data-gameid');`;
 
 const isPlaybuzzDomain = () => {
 	return getCurrentUrl().then(url => {
