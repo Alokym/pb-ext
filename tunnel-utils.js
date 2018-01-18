@@ -16,7 +16,7 @@ const executeTitleSearch = () => {
 			if (url.indexOf('playbuzz.com') !== -1) {
 				script = `document.querySelector('h1.article-title').innerText`;
 			} else {
-				script = `document.querySelector('iframe[data-id]')[0].contentWindow.document.title`;
+				script = `document.querySelector('iframe[data-id]').contentWindow.document.title`;
 			}
 		})
 		.then(() => {
@@ -30,8 +30,7 @@ const executeTitleSearch = () => {
 			});
 		})
 		.then((res) => {
-			chrome.tabs.executeScript(null, `console.log(${res})`);
-			return res;
+			return res[0];
 		})
 }
 
