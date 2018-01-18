@@ -58,4 +58,9 @@ document.addEventListener('DOMContentLoaded', () => {
             changeView();
         });
     // }, 1000);
+
+    TunnelUtils.getItemTitle().then(res => {
+      console.log('title');
+      console.log(res)
+    })
 });
