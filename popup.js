@@ -25,12 +25,13 @@ function setLink(url) {
     });
 }
 
-function setSlackLink() {
+function setSlackLink(url) {
     let slackLink = document.getElementById('slack-link');
     slackLink.addEventListener('click', () => {
         let slackInput = document.getElementById('slack-input');
         slackInput.style = 'display: block';
         slackLink.style = 'display: none';
+        document.getElementById('link-wrapper').style = 'display: none';
         document.getElementById('slack-send').style = 'display: block';
 
         slackInput.focus();
@@ -48,13 +49,13 @@ function setSlackLink() {
                 .then(title => {
                     let text = slackInput.value;
 
-                    sendSlackMessage(text, author, title);
+                    sendSlackMessage(text, author, title, url);
                 });
         });
     });
 }
 
-function sendSlackMessage(text, author, itemTitle) {
+function sendSlackMessage(text, author, itemTitle, url) {
     let data = {
         "attachments": [
             {
@@ -65,7 +66,7 @@ function sendSlackMessage(text, author, itemTitle) {
                 "author_link": "",
                 "author_icon": "https://img.playbuzz.com/image/upload/w_100/v1516287187/hw7dgj9lhjq7stukq7qt.jpg",
                 "title": text,
-                "title_link": "https://api.slack.com/",
+                "title_link": url,
                 "text": itemTitle,
                 "fields": [],
                 "image_url": "http://my-website.com/path/to/image.jpg",
@@ -123,10 +124,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     setTimeout(() => {
         TunnelUtils.performTunneling().then((res) => {
-            console.log(res);
-            setLink(res);
+            res = JSON.parse(res);
+            setLink(res.url);
 
-            setSlackLink();
+            setSlackLink(res.url);
 
             changeView();
         });

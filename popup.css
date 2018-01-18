@@ -52,6 +52,7 @@ h1 {
     max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .link-wrapper {
@@ -60,7 +61,7 @@ h1 {
     margin-top: 8px;
     border: solid 1px #979797;
     border-radius: 8px;
-    padding: 1px 4px;
+    padding: 4px 8px 5px;
     max-width: 160px;
     cursor: pointer;
 }
