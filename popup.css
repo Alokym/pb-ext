@@ -4,6 +4,10 @@ body {
     background-color: black;
 }
 
+.hidden {
+    display: none;
+}
+
 .close {
     position: absolute;
     right: 10px;
@@ -16,11 +20,33 @@ body {
     opacity: 1;
 }
 
+img.icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 3px;
+}
+
+h1 {
+    font-family: 'Pacifico', cursive;
+    color: white;
+    margin: 0;
+    font-weight: normal;
+    font-size: 20px;
+}
+
+a {
+    color: white;
+}
+
 .header {
-    display: flex;
     position: absolute;
     left: 15px;
     top: 10px;
+}
+
+.header-wrapper {
+    display: flex;
+    align-items: center;
 }
 
 .logo {

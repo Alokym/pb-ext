@@ -2,16 +2,33 @@
 <html>
 <head>
     <title>Tunnel Popup</title>
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <link rel="stylesheet" href="popup.css"/>
 </head>
 
 <body>
 <img id="close" class="close" src="images/close.png"/>
 
-<div class="header">
-    <img class="icon" src="icons/icon24.png"/>
-    <img class="tunneling" src="images/tunneling.png"/>
+<div id="progress" class="header">
+    <div class="header-wrapper">
+        <img class="icon" src="icons/icon24.png"/>
+        <h1>
+            Tunneling...
+        </h1>
+    </div>
 </div>
+
+<div id="complete" class="header hidden">
+    <div class="header-wrapper">
+        <img class="icon" src="icons/icon24.png"/>
+        <h1>
+            Tunneled!
+        </h1>
+    </div>
+    <a href="#" id="link">Playbuzz</a>
+</div>
+
+<img id="background" class="background"/>
 
 <img class="logo" src="images/tunnel.png"/>
 
