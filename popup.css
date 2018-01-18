@@ -11,7 +11,8 @@
 body {
     width: 279px;
     height: 339px;
-    background-color: black;
+    background-size: cover;
+    background-position: center;
 }
 
 .hidden,
@@ -64,6 +65,7 @@ h1 {
     padding: 4px 8px 5px;
     max-width: 160px;
     cursor: pointer;
+    background-color: black;
 }
 
 .link-wrapper .arrow {

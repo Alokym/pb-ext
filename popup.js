@@ -114,7 +114,15 @@ function tunnelingLoader() {
     }, 300);
 }
 
+function setBackgroundImage(){
+    let num = Math.floor(Math.random() * 7);
+    console.log(num);
+    document.getElementsByTagName('body')[0].style = `background-image: url("tunnels/${num}.jpg");`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+
+    setBackgroundImage();
 
     getUserDetails().then(details => console.log(details));
 
