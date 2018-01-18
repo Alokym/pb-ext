@@ -4,8 +4,18 @@ class TunnelUtils {
 	}
 
 	static getItemTitle() {
-		return Promise.resolve('test title');
+		return executeTitleSearch();
 	}
+}
+
+const executeTitleSearch = () => {
+	return new Promise((resolve, reject) => {
+	    chrome.tabs.executeScript(null, {code:`document.querySelector('h1.article-title').innerText`}, 
+			(results) => {
+		        resolve(results);
+		    }
+	    );
+	});
 }
 
 const executeEmbedSearch = (fileName) => {
