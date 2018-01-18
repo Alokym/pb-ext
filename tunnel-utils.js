@@ -60,12 +60,8 @@ const getEnvironment = () => {
 }
 
 const sendTunnelRequest = (itemData) => {
-	
-	fetch(`https://stg-embed.playbuzz.com/tunnel?id=${itemData.itemId}&env=${itemData.environment}`, {method: 'POST'})
-		.then(res => res.text())
-		.then(res => {
-			Promise.resolve();
-		});
+	const domainName = (itemData.environment === 'staging') ? 'https://stg-embed.playbuzz.com' : 'https://embed.playbuzz.com';
 
-	return Promise.resolve('success');
+	return fetch(`${domainName}/tunnel?id=${itemData.itemId}`, {method: 'POST'})
+		.then(res => res.text())
 }
