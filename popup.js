@@ -26,7 +26,15 @@ function setLink(url) {
 }
 
 function setSlackLink() {
+    let slackLink = document.getElementById('slack-link');
+    slackLink.addEventListener('click', () => {
+        let slackInput = document.getElementById('slack-input');
+        slackInput.style = 'display: block';
+        document.getElementById('link-wrapper').style = 'display: none';
 
+        slackInput.focus();
+        slackLink.innerText = 'Send!';
+    });
 }
 
 function changeView() {
@@ -40,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('close').addEventListener('click', closePopup);
 
-    setTimeout(() => {
+    // setTimeout(() => {
         TunnelUtils.performTunneling().then((url) => {
             url = 'https://www.google.com';
             setLink(url);
@@ -49,5 +57,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
             changeView();
         });
-    }, 1000);
+    // }, 1000);
 });

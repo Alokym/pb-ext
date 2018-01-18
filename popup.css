@@ -66,6 +66,16 @@ h1 {
     margin-top: 8px;
 }
 
+.slack-input {
+    margin-top: 8px;
+    border: solid 1px #979797;
+    border-radius: 8px;
+    background-color: black;
+    color: #9b9b9b;
+    padding: 3px 6px;
+    outline: none;
+}
+
 .header {
     position: absolute;
     left: 15px;
