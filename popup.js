@@ -9,7 +9,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('close').addEventListener('click', closePopup);
 
     TunnelUtils.searchForItemId()
-        .then((itemId) => {
-            document.getElementById('item-id').innerText = itemId;
+        .then((results) => {
+            document.getElementById('item-id').innerText = results.itemId;
+            document.getElementById('environment').innerText = results.environment;
+
         });
 });

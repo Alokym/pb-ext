@@ -6,17 +6,24 @@ class TunnelUtils {
 
 const executeEmbedSearch = (fileName) => {
 	let script;
+	let environment;
 
 	return isPlaybuzzDomain()
 		.then(is => {
 			script = is ? getNativeItemId : getEmbeddedItemId;
+			return getEnvironment();
+		})
+		.then((env) => {
+			environment = env;
 		})
 		.then(() => {
 			return new Promise((resolve, reject) => {
 			    chrome.tabs.executeScript(null, {code:script}, 
 					(results) => {
-						console.log(results);
-				        resolve(results);
+				        resolve({
+				        	itemId: results,
+				        	environment: environment
+				        });
 				    }
 			    );
 			});
@@ -44,3 +51,9 @@ const getCurrentUrl = () => {
 		});
 	});
 };
+
+const getEnvironment = () => {
+	return getCurrentUrl().then(url => {
+		return /((alpha)|(sandbox-\d{1,2}))\.playbuzz\.com/.test(url) ? 'staging' : 'production';
+	})
+}
