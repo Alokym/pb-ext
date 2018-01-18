@@ -123,4 +123,12 @@ document.addEventListener('DOMContentLoaded', () => {
       saveBackgroundColor(url, dropdown.value);
     });
   });
+
+  document.getElementById('embed-search-action').addEventListener('click', () => {
+    TunnelUtils.searchForEmbeddedItem()
+      .then((itemId) => {
+        document.getElementById('emded-item-id').innerText = itemId;
+      });
+  })
+
 });
