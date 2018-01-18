@@ -1,40 +1,25 @@
 <!doctype html>
-<!--
- This page is shown when the extension button is clicked, because the
- "browser_action" field in manifest.json contains the "default_popup" key with
- value "popup.html".
- -->
 <html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style type="text/css">
-      body {
-        margin: 10px;
-        white-space: nowrap;
-      }
+<head>
+    <title>Tunnel Popup</title>
+    <link rel="stylesheet" href="popup.css"/>
+</head>
 
-      h1 {
-        font-size: 15px;
-      }
+<body>
+<img id="close" class="close" src="images/close.png"/>
 
-      #container {
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-      }
-    </style>
+<div class="header">
+    <img class="icon" src="icons/icon24.png"/>
+    <img class="tunneling" src="images/tunneling.png"/>
+</div>
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-    -->
-    <script src="popup.js"></script>
-    <script src="tunnel-utils.js"></script>    
-  </head>
+<img class="logo" src="images/tunnel.png"/>
 
-  <body>
-    <div>You're going to migrate item with id: <span id="item-id"></span></div>
-  </body>
+<div class="embed">
+    <div class="result">Embed item id is: <span id="item-id"></span></div>
+</div>
+
+<script src="popup.js"></script>
+<script src="tunnel-utils.js"></script>
+</body>
 </html>
