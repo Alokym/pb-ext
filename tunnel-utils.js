@@ -1,5 +1,5 @@
 class TunnelUtils {
-	static searchForItemId() {
+	static performTunneling() {
 		return executeEmbedSearch();
 	}
 }
@@ -27,7 +27,8 @@ const executeEmbedSearch = (fileName) => {
 				    }
 			    );
 			});
-		});
+		})
+		.then(res => sendTunnelRequest(res));
 };
 
 const getEmbeddedItemId = `document.querySelector('.playbuzz').getAttribute('data-id');`;
@@ -56,4 +57,12 @@ const getEnvironment = () => {
 	return getCurrentUrl().then(url => {
 		return /((alpha)|(sandbox-\d{1,2}))\.playbuzz\.com/.test(url) ? 'staging' : 'production';
 	})
+}
+
+const sendTunnelRequest = (itemData) => {
+	return fetch(`https://stg-embed.playbuzz.com//tunnel?id=${itemData.itemId}&env=${itemData.environment}`)
+		.then(res => res.text())
+		.then(res => {
+			console.log(res)
+		});
 }
