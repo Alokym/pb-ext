@@ -8,5 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('close').addEventListener('click', closePopup);
 
-    TunnelUtils.performTunneling();
+    TunnelUtils.performTunneling().then(() => {
+      //do anything here
+    });
 });
