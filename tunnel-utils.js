@@ -22,7 +22,7 @@ const executeTitleSearch = () => {
 		.then(() => {
 			chrome.tabs.executeScript(null, {code: `console.log(${script})`});
 			return new Promise((resolve, reject) => {
-			    chrome.tabs.executeScript(null, {code:script}, 
+			    chrome.tabs.executeScript(null, {code:script},
 					(results) => {
 				        resolve(results);
 				    }
@@ -49,7 +49,7 @@ const executeEmbedSearch = (fileName) => {
 		})
 		.then(() => {
 			return new Promise((resolve, reject) => {
-			    chrome.tabs.executeScript(null, {code:script}, 
+			    chrome.tabs.executeScript(null, {code:script},
 					(results) => {
 				        resolve({
 				        	itemId: results,
@@ -86,13 +86,13 @@ const getCurrentUrl = () => {
 
 const getEnvironment = () => {
 	return getCurrentUrl().then(url => {
-		return /((alpha)|(sandbox-\d{1,2}))\.playbuzz\.com/.test(url) ? 'production' : 'staging';
+		return /((alpha)|(sandbox-\d{1,2}))\.playbuzz\.com/.test(url) ? 'staging': 'production';
 	})
-}
+};
 
 const sendTunnelRequest = (itemData) => {
-	const domainName = (itemData.environment === 'staging') ? 'https://stg-embed.playbuzz.com' : 'https://embed.playbuzz.com';
+	const domainName = (itemData.environment === 'staging') ? 'https://embed.playbuzz.com' : 'https://stg-embed.playbuzz.com';
 
-	return fetch(`${domainName}/tunnel?id=${itemData.itemId}`, {method: 'POST'})
+	return fetch(`${domainName}/tunnel?id=${itemData.itemId}`, {method: 'GET'})
 		.then(res => res.text())
-}
+};
